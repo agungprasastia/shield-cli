@@ -27,7 +27,7 @@
 
 **Shield** is an AI-powered penetration testing automation framework that combines multiple AI providers (OpenAI GPT-4, Claude, Google Gemini, OpenRouter) with 19 battle-tested security tools to deliver intelligent, adaptive security assessments.
 
-[Features](#-features) • [Installation](#-installation) • [Quick Start](#-quick-start) • [Architecture](#-architecture) • [Contributing](#-contributing)
+[Features](#-features) • [Installation](#-installation) • [Quick Start](#-quick-start) • [Architecture](#️-architecture) • [Roadmap](#️-roadmap)
 
 </div>
 
@@ -227,5 +227,3 @@ docker-compose run shield workflow run --name web_pentest --target example.com
 ## 📄 License
 
 MIT License — see [LICENSE](LICENSE) for details.
-
----
