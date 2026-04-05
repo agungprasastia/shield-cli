@@ -1,5 +1,5 @@
 """
-Phantom — Input Validation & Sanitization
+Shield — Input Validation & Sanitization
 Prevents command injection and validates target formats.
 """
 

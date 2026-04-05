@@ -32,8 +32,8 @@ class OpenRouterProvider(BaseProvider):
                 temperature=self.temperature,
                 max_tokens=self.max_tokens,
                 default_headers={
-                    "HTTP-Referer": "https://github.com/phantom-cli",
-                    "X-Title": "Phantom CLI",
+                    "HTTP-Referer": "https://github.com/agungprasastia/shield-cli",
+                    "X-Title": "Shield CLI",
                 },
             )
             self.logger.info(f"OpenRouter provider initialized with model: {self.model}")
