@@ -1,4 +1,4 @@
-﻿"""Report generation command"""
+"""Report generation command"""
 
 import typer
 import asyncio

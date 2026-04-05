@@ -1,4 +1,4 @@
-﻿"""
+"""
 Shield CLI — Unit Tests
 Run with: python -m pytest tests/ -v
 """

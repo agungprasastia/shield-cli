@@ -1,4 +1,4 @@
-﻿"""
+"""
 Base Agent class — all Shield AI agents inherit from this.
 """
 

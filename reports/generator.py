@@ -1,4 +1,4 @@
-﻿"""
+"""
 Shield — Report Generator
 Renders Jinja2 templates into Markdown, HTML, or JSON reports.
 """

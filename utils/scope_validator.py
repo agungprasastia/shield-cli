@@ -1,4 +1,4 @@
-﻿"""
+"""
 Shield — Scope Validator
 Validates targets against blacklisted networks and scope constraints.
 Prevents accidental scanning of private/unauthorized networks.

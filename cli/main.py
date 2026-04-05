@@ -1,4 +1,4 @@
-﻿"""
+"""
 Shield CLI — Main Entry Point
 """
 

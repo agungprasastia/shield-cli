@@ -1,4 +1,4 @@
-﻿"""Analyze existing session findings"""
+"""Analyze existing session findings"""
 
 import typer
 import asyncio

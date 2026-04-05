@@ -1,4 +1,4 @@
-﻿"""
+"""
 Shield — Memory & State Management
 Maintains state across the penetration testing workflow.
 """

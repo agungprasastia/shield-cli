@@ -1,4 +1,4 @@
-﻿"""Initialize Shield configuration"""
+"""Initialize Shield configuration"""
 
 import typer
 import shutil

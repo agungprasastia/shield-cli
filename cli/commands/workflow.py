@@ -1,4 +1,4 @@
-﻿"""Workflow management command"""
+"""Workflow management command"""
 
 import typer
 import asyncio

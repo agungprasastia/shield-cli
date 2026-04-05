@@ -1,4 +1,4 @@
-﻿"""List AI models and provider status"""
+"""List AI models and provider status"""
 
 import typer
 import yaml

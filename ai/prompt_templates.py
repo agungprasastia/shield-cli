@@ -1,4 +1,4 @@
-﻿"""
+"""
 Shield — Prompt Templates
 All system prompts and task prompts for the multi-agent system.
 """

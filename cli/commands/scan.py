@@ -1,4 +1,4 @@
-﻿"""Quick scan command"""
+"""Quick scan command"""
 
 import typer
 import asyncio

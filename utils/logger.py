@@ -1,4 +1,4 @@
-﻿"""
+"""
 Shield — Audit Logger
 Provides structured logging for all AI decisions, tool executions, and system events.
 """

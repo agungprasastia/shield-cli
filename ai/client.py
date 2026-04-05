@@ -1,4 +1,4 @@
-﻿"""
+"""
 Shield — Unified AI Client
 Routes requests to the active AI provider.
 """
