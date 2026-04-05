@@ -1,0 +1,16 @@
+﻿version: '3.8'
+
+services:
+  Shield:
+    build: .
+    container_name: shield-cli
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    volumes:
+      - ./reports:/app/reports
+      - ./logs:/app/logs
+      - ./config:/app/config
+    network_mode: host
