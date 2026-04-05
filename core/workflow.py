@@ -3,7 +3,6 @@ Workflow Orchestration Engine
 Coordinates agents and manages pentest execution flow.
 """
 
-import asyncio
 import time
 import yaml
 from typing import Dict, Any, Optional, List
@@ -102,7 +101,7 @@ class WorkflowEngine:
 
                 try:
                     await self._execute_step(step)
-                    c.print(f"       [green]✅ Done[/green]")
+                    c.print("       [green]✅ Done[/green]")
                 except Exception as e:
                     c.print(f"       [yellow]⚠️  Skipped: {e}[/yellow]")
                     self.logger.warning(f"Step {step_name} failed: {e}")

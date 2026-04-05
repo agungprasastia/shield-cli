@@ -1,6 +1,5 @@
 """Initialize Shield configuration"""
 
-import typer
 import shutil
 from pathlib import Path
 from rich.console import Console
@@ -29,9 +28,9 @@ def init_command():
         example = Path(".env.example")
         if example.exists():
             shutil.copy(example, env_path)
-            console.print(f"  📋 Created .env from .env.example — edit with your API keys")
+            console.print("  📋 Created .env from .env.example — edit with your API keys")
         else:
-            console.print(f"  ⚠️  No .env file — set API keys via environment variables")
+            console.print("  ⚠️  No .env file — set API keys via environment variables")
 
     # Check tools
     console.print("\n[bold cyan]🛠️  Checking installed tools...[/bold cyan]\n")

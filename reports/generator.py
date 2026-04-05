@@ -42,7 +42,7 @@ class ReportGenerator:
         try:
             template = self.env.get_template(template_name)
             return template.render(**serializable)
-        except Exception as e:
+        except Exception:
             # Fallback to basic rendering
             return self._fallback_render(serializable, format)
 
@@ -67,21 +67,21 @@ class ReportGenerator:
         summary = data.get("findings_summary", {})
 
         lines = [
-            f"# 🔐 Penetration Test Report",
-            f"",
+            "# 🔐 Penetration Test Report",
+            "",
             f"**Target:** {data.get('target', 'N/A')}",
             f"**Date:** {data.get('date', 'N/A')}",
             f"**Session:** {data.get('session_id', 'N/A')}",
             f"**Duration:** {data.get('duration', 'N/A')}",
-            f"",
-            f"## Executive Summary",
-            f"",
+            "",
+            "## Executive Summary",
+            "",
             data.get("executive_summary", "No summary available."),
-            f"",
-            f"## Findings Summary",
-            f"",
-            f"| Severity | Count |",
-            f"|----------|-------|",
+            "",
+            "## Findings Summary",
+            "",
+            "| Severity | Count |",
+            "|----------|-------|",
         ]
 
         for sev in ["critical", "high", "medium", "low", "info"]:
@@ -93,18 +93,18 @@ class ReportGenerator:
             sev = f.get("severity", "info").upper()
             lines.extend([
                 f"### {i}. [{sev}] {f.get('title', 'Untitled')}",
-                f"",
+                "",
                 f"**Description:** {f.get('description', 'N/A')}",
-                f"",
+                "",
                 f"**Tool:** {f.get('tool', 'N/A')}",
-                f"",
-                f"**Evidence:**",
-                f"```",
+                "",
+                "**Evidence:**",
+                "```",
                 f"{f.get('evidence', 'N/A')}",
-                f"```",
-                f"",
+                "```",
+                "",
                 f"**Remediation:** {f.get('remediation', 'N/A')}",
-                f"",
+                "",
                 "---",
                 "",
             ])

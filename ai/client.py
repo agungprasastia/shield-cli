@@ -3,7 +3,6 @@ Shield — Unified AI Client
 Routes requests to the active AI provider.
 """
 
-import os
 from typing import Dict, Any, Optional
 from utils.logger import get_logger
 

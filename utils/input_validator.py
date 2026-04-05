@@ -51,7 +51,7 @@ def validate_target(target: str) -> Tuple[bool, str]:
             if not hostname:
                 return False, f"Invalid URL: {target}"
             if DANGEROUS_CHARS.search(hostname):
-                return False, f"URL hostname contains dangerous characters"
+                return False, "URL hostname contains dangerous characters"
             return True, ""
         except Exception:
             return False, f"Invalid URL format: {target}"

@@ -3,7 +3,6 @@
 import typer
 import asyncio
 import yaml
-import json
 from pathlib import Path
 from rich.console import Console
 from rich.panel import Panel
@@ -18,7 +17,7 @@ def report_command(
     provider: Optional[str] = typer.Option(None, "--provider", "-p", help="AI provider"),
 ):
     """Generate a report from a previous session"""
-    console.print(f"\n[bold cyan]📊 Generating Report[/bold cyan]")
+    console.print("\n[bold cyan]📊 Generating Report[/bold cyan]")
     console.print(f"  Session: {session}")
     console.print(f"  Format: {format}\n")
 

@@ -1,6 +1,5 @@
 """List AI models and provider status"""
 
-import typer
 import yaml
 from pathlib import Path
 from rich.console import Console

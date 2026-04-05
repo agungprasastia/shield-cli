@@ -2,7 +2,7 @@
 Base Agent class — all Shield AI agents inherit from this.
 """
 
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 from abc import ABC, abstractmethod
 
 from ai.client import AIClient

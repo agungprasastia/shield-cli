@@ -5,7 +5,6 @@ Generates professional penetration test reports.
 
 from typing import Dict, Any
 from datetime import datetime
-from pathlib import Path
 
 from core.agent import BaseAgent
 from ai.prompt_templates import (

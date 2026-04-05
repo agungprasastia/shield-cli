@@ -20,7 +20,6 @@ except ImportError:
 
 import typer
 from rich.console import Console
-from typing import Optional
 
 from cli.commands import init_cmd, scan, recon, workflow, report, models, analyze
 
