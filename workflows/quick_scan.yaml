@@ -1,0 +1,86 @@
+﻿# ═══════════════════════════════════════════════════════
+# Shield Workflow — Quick Scan
+# Fast but comprehensive security assessment
+# ═══════════════════════════════════════════════════════
+
+name: quick_scan
+description: Quick but comprehensive security scan combining recon, web probing, and vulnerability checks
+category: scan
+
+settings:
+  max_duration: 2400  # 40 minutes
+  report_format: markdown
+
+steps:
+  # ── Phase 1: Reconnaissance ────────────────────────────
+  - name: subdomain_discovery
+    type: tool
+    tool: subfinder
+    description: Discover subdomains via passive enumeration
+    parameters:
+      sources: ["crtsh", "hackertarget"]
+
+  - name: dns_enumeration
+    type: tool
+    tool: dnsrecon
+    description: Enumerate DNS records and check DNSSEC
+    parameters:
+      type: std
+
+  # ── Phase 2: Network Scanning ──────────────────────────
+  - name: port_scanning
+    type: tool
+    tool: nmap
+    description: Scan for open ports, services, and OS detection
+    parameters:
+      default_args: "-sV -sC -O"
+      timing: T4
+
+  # ── Phase 3: Web Probing & Detection ───────────────────
+  - name: http_probing
+    type: tool
+    tool: httpx
+    description: Probe HTTP endpoints and detect technologies
+    parameters:
+      threads: 50
+      tech_detect: true
+
+  - name: technology_fingerprint
+    type: tool
+    tool: whatweb
+    description: Fingerprint web technologies, frameworks, CMS
+
+  - name: waf_detection
+    type: tool
+    tool: wafw00f
+    description: Detect Web Application Firewalls
+
+  # ── Phase 4: SSL/TLS Analysis ──────────────────────────
+  - name: ssl_analysis
+    type: tool
+    tool: sslyze
+    description: Analyze SSL/TLS configuration and certificates
+
+  # ── Phase 5: Vulnerability Scanning ────────────────────
+  - name: vulnerability_scan
+    type: tool
+    tool: nuclei
+    description: Run vulnerability templates against target
+    parameters:
+      severity: ["critical", "high", "medium"]
+
+  - name: directory_bruteforce
+    type: tool
+    tool: gobuster
+    description: Discover hidden directories and files
+    parameters:
+      threads: 30
+
+  # ── Phase 6: AI Analysis & Reporting ───────────────────
+  - name: correlation_analysis
+    type: analysis
+    description: AI correlates findings across all tools to identify attack chains
+
+  - name: generate_report
+    type: report
+    description: Generate comprehensive security assessment report

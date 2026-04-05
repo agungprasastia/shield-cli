@@ -1,0 +1,51 @@
+﻿# ═══════════════════════════════════════════════════════
+# Shield Workflow — Basic Reconnaissance
+# Quick surface-level assessment of a target
+# ═══════════════════════════════════════════════════════
+
+name: recon
+description: Basic reconnaissance and information gathering
+category: reconnaissance
+
+settings:
+  max_duration: 1800  # 30 minutes
+  report_format: markdown
+
+steps:
+  - name: subdomain_discovery
+    type: tool
+    tool: subfinder
+    description: Discover subdomains via passive enumeration
+    parameters:
+      sources: ["crtsh", "hackertarget"]
+
+  - name: dns_enumeration
+    type: tool
+    tool: dnsrecon
+    description: Enumerate DNS records
+    parameters:
+      type: std
+
+  - name: port_scanning
+    type: tool
+    tool: nmap
+    description: Scan for open ports and services
+    parameters:
+      default_args: "-sV -sC"
+      timing: T4
+
+  - name: technology_detection
+    type: tool
+    tool: httpx
+    description: Probe HTTP endpoints and detect technologies
+    parameters:
+      threads: 50
+      tech_detect: true
+
+  - name: correlation_analysis
+    type: analysis
+    description: Correlate findings across all recon tools
+
+  - name: generate_report
+    type: report
+    description: Generate reconnaissance report

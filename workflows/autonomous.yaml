@@ -1,0 +1,42 @@
+﻿# ═══════════════════════════════════════════════════════
+# Shield Workflow — Autonomous AI-Driven Assessment
+# Let the AI decide every step
+# ═══════════════════════════════════════════════════════
+
+name: autonomous
+description: AI-driven autonomous penetration testing — the AI decides every step
+category: autonomous
+
+settings:
+  max_duration: 7200  # 2 hours
+  max_steps: 20
+  report_format: html
+
+steps:
+  # Start with basic recon, then AI takes over
+  - name: initial_recon
+    type: tool
+    tool: httpx
+    description: Initial HTTP probing
+    parameters:
+      tech_detect: true
+
+  - name: port_scan
+    type: tool
+    tool: nmap
+    description: Initial port scan
+    parameters:
+      default_args: "-sV"
+      timing: T4
+
+  # AI autonomous steps will be injected here by the WorkflowEngine
+  # The engine's run_autonomous() method handles the loop
+
+  - name: final_analysis
+    type: analysis
+    description: Final cross-correlation of all findings
+
+  - name: generate_report
+    type: report
+    format: html
+    description: Generate final automated report

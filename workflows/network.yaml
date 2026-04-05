@@ -1,0 +1,56 @@
+﻿# ═══════════════════════════════════════════════════════
+# Shield Workflow — Network Penetration Test
+# Infrastructure-level security assessment
+# ═══════════════════════════════════════════════════════
+
+name: network
+description: Network infrastructure penetration test
+category: network
+
+settings:
+  max_duration: 3600
+  report_format: markdown
+
+steps:
+  - name: fast_port_scan
+    type: tool
+    tool: masscan
+    description: Ultra-fast port scanning across the network
+    parameters:
+      ports: "1-10000"
+      rate: 1000
+
+  - name: detailed_service_scan
+    type: tool
+    tool: nmap
+    description: Detailed service and version detection
+    parameters:
+      default_args: "-sV -sC -O"
+      timing: T4
+
+  - name: vulnerability_scan
+    type: tool
+    tool: nuclei
+    description: Network vulnerability scanning
+    parameters:
+      severity: ["critical", "high"]
+
+  - name: ssl_testing
+    type: tool
+    tool: testssl
+    description: SSL/TLS configuration analysis
+
+  - name: dns_recon
+    type: tool
+    tool: dnsrecon
+    description: DNS intelligence gathering
+    parameters:
+      type: std
+
+  - name: correlation_analysis
+    type: analysis
+    description: Correlate network findings
+
+  - name: generate_report
+    type: report
+    description: Generate network assessment report

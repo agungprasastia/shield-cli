@@ -1,0 +1,132 @@
+﻿# ═══════════════════════════════════════════════════════
+# Shield Workflow — Full Scan
+# Complete security assessment using ALL 19 tools
+# ═══════════════════════════════════════════════════════
+
+name: full_scan
+description: Maximum coverage scan using all 19 integrated security tools
+category: comprehensive
+
+settings:
+  max_duration: 7200  # 2 hours
+  report_format: html
+
+steps:
+  # ── Phase 1: Subdomain & DNS ───────────────────────────
+  - name: subdomain_discovery
+    type: tool
+    tool: subfinder
+    description: Discover subdomains via passive enumeration
+
+  - name: subdomain_enumeration
+    type: tool
+    tool: amass
+    description: Advanced subdomain enumeration with multiple sources
+
+  - name: dns_enumeration
+    type: tool
+    tool: dnsrecon
+    description: Enumerate DNS records and check DNSSEC
+
+  # ── Phase 2: Network Scanning ──────────────────────────
+  - name: port_scan_nmap
+    type: tool
+    tool: nmap
+    description: Full port scan with service and OS detection
+    parameters:
+      default_args: "-sV -sC -O -A"
+      timing: T4
+
+  - name: port_scan_masscan
+    type: tool
+    tool: masscan
+    description: Ultra-fast mass port scanning for all 65535 ports
+
+  # ── Phase 3: Web Reconnaissance ────────────────────────
+  - name: http_probing
+    type: tool
+    tool: httpx
+    description: Probe HTTP endpoints and detect technologies
+
+  - name: technology_fingerprint
+    type: tool
+    tool: whatweb
+    description: Identify web technologies, CMS, frameworks
+
+  - name: waf_detection
+    type: tool
+    tool: wafw00f
+    description: Detect Web Application Firewalls
+
+  - name: wordpress_scan
+    type: tool
+    tool: wpscan
+    description: WordPress-specific vulnerability scanning
+
+  # ── Phase 4: SSL/TLS ───────────────────────────────────
+  - name: ssl_analysis
+    type: tool
+    tool: sslyze
+    description: Deep SSL/TLS configuration analysis
+
+  - name: ssl_test
+    type: tool
+    tool: testssl
+    description: Comprehensive SSL/TLS testing
+
+  # ── Phase 5: Directory & Parameter Discovery ───────────
+  - name: directory_bruteforce
+    type: tool
+    tool: gobuster
+    description: Discover hidden directories and files
+
+  - name: web_fuzzing
+    type: tool
+    tool: ffuf
+    description: Fuzz web paths, parameters, and headers
+
+  - name: parameter_discovery
+    type: tool
+    tool: arjun
+    description: Discover hidden GET/POST parameters
+
+  # ── Phase 6: Vulnerability Scanning ────────────────────
+  - name: vulnerability_scan
+    type: tool
+    tool: nuclei
+    description: Run vulnerability templates (critical, high, medium)
+    parameters:
+      severity: ["critical", "high", "medium"]
+
+  - name: web_server_scan
+    type: tool
+    tool: nikto
+    description: Comprehensive web server vulnerability scan
+
+  - name: sql_injection
+    type: tool
+    tool: sqlmap
+    description: Automated SQL injection detection
+    parameters:
+      risk: 1
+      level: 1
+
+  - name: xss_scanning
+    type: tool
+    tool: xsstrike
+    description: Cross-site scripting (XSS) detection
+
+  - name: secrets_scanning
+    type: tool
+    tool: gitleaks
+    description: Scan for leaked secrets and API keys
+
+  # ── Phase 7: AI Analysis & Reporting ───────────────────
+  - name: correlation_analysis
+    type: analysis
+    description: AI cross-correlates all findings to identify attack chains
+
+  - name: generate_report
+    type: report
+    format: html
+    description: Generate comprehensive HTML security report with all evidence
